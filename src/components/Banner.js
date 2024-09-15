@@ -11,7 +11,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Web Developer", "Web Designer", "UI/UX Designer" ];
+  const toRotate = [ "Software Developer", "Web Developer", "IT Professional" ];
   const period = 2000;
 
   useEffect(() => {
@@ -56,8 +56,8 @@ export const Banner = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Judy`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <h1>{`Hi! I'm Eric`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Software Developer", "Web Developer", "IT Professional" ]'><span className="wrap">{text}</span></span></h1>
+                  <p>I am a recent graduate from Rowan University, where I majored in Computing and Informatics and minored in Computer Science. My passion for coding and IT drives me to create innovative solutions to real-world problems. I enjoy tackling challenges that require both technical expertise and creativity, and I am always eager to expand my knowledge and skills in the ever-evolving field of technology.</p>
                   <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
               </div>}
             </TrackVisibility>
