@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,13 +10,15 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
 function App() {
+  const contactRef = useRef(null); // Create a ref for the contact section
+
   return (
     <div className="App">
-      <NavBar />
+      <NavBar contactRef={contactRef} /> {/* Pass the ref to NavBar */}
       <Banner />
       <Skills />
       <Projects />
-      <Contact />
+      <Contact contactRef={contactRef} /> {/* Pass the ref to Contact */}
       <Footer />
     </div>
   );
