@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../assets/img/header-img.svg";
+import headerImg from "../assets/img/avatar3d.png";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -50,11 +50,11 @@ export const Banner = () => {
   return (
     <section className="banner" id="home">
       <Container>
-        <Row className="aligh-items-center">
+        <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+              <div>
                 <span className="tagline">Welcome to my Portfolio</span>
                 <h1>{`Hi! I'm Eric`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Software Developer", "Web Developer", "IT Professional" ]'><span className="wrap">{text}</span></span></h1>
                   <p>I am a recent graduate from Rowan University, where I majored in Computing and Informatics and minored in Computer Science. My passion for coding and IT drives me to create innovative solutions to real-world problems. I enjoy tackling challenges that require both technical expertise and creativity, and I am always eager to expand my knowledge and skills in the ever-evolving field of technology.</p>
@@ -65,8 +65,8 @@ export const Banner = () => {
           <Col xs={12} md={6} xl={5}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img"/>
+                <div>
+                  <img src={headerImg} alt="Header Img" className="img-fluid" />
                 </div>}
             </TrackVisibility>
           </Col>
