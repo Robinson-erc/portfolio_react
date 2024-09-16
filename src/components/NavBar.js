@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from '../assets/img/ProfPic-removebg-preview.png'
 import navIcon1 from '../assets/img/nav-icon1.svg'
-import navIcon2 from '../assets/img/nav-icon2.svg'
+import navIcon2 from '../assets/img/github.png'
 import navIcon3 from '../assets/img/nav-icon3.svg'
 
 export const NavBar = ({ contactRef }) => {
@@ -54,6 +54,9 @@ export const NavBar = ({ contactRef }) => {
                     <span className="navbar-text">
                         <div className="social-icon">
                             <a href="https://www.linkedin.com/in/eric-robinson-jr-841b1023b/"><img src={navIcon1} alt="icon"/></a>
+                        </div>
+                        <div className="social-icon">
+                            <a href="https://github.com/Robinson-erc"><img src={navIcon2} alt="icon"/></a>
                         </div>
                         <button className="vvd" onClick={scrollToContact}><span>let's connect</span></button>
                     </span>
