@@ -290,26 +290,21 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner img {
   animation: updown 3s linear infinite;
 }
+
 @keyframes updown {
-    0% {
-        transform: translateY(-20px);
-    }
-    50% {
-        transform: translateY(20px);
-    }
-    100% {
-        transform: translateY(-20px);
-    }
+  0% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
 }
+
 .txt-rotate > .wrap {
   border-right: 0.08em solid #666;
-}
-/* Add this to your App.css */
-.txt-rotate {
-  display: inline-block;
-  width: 250px; /* Adjust the width as needed */
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 /************ Skills Css ************/
