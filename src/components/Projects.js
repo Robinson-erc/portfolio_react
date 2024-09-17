@@ -3,6 +3,7 @@ import { ProjectCard } from "./ProjectCard";
 import projImg1 from "../assets/img/movieManiaWelcomePage.jpg";
 import projImg2 from "../assets/img/spotifyApp.jpg";
 import projImg3 from "../assets/img/expense-tracker.png";
+import projImg4 from "../assets/img/project-img4.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -27,6 +28,12 @@ export const Projects = () => {
       imgUrl: projImg3,
       link: "" // Provide a link if you have one
     },
+    {
+      title: "My First Portfolio App",
+      description: "Design & Development",
+      imgUrl: projImg4,
+      link: "https://ericsportfoli0.netlify.app/" // Provide a link if you have one
+    }
   ];
 
   return (
