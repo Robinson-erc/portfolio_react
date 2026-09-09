@@ -1,66 +1,44 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import arrow1 from "../assets/img/arrow1.svg";
-import arrow2 from "../assets/img/arrow2.svg";
-import colorSharp from "../assets/img/color-sharp.png"
+const GROUPS = [
+  {
+    title: "Languages",
+    items: ["C#", "SQL", "JavaScript", "Python", "Java"],
+  },
+  {
+    title: "Frameworks & APIs",
+    items: ["ASP.NET Core / .NET", "REST", "SOAP", "React"],
+  },
+  {
+    title: "Data & reporting",
+    items: ["Symitar PowerOn", "SQL Server", "Report Builder (SSRS)", "Power BI", "Pandas · NumPy"],
+  },
+  {
+    title: "Practice",
+    items: ["Agile / Scrum", "Waterfall", "Jira", "Git"],
+  },
+];
 
 export const Skills = () => {
-    const responsive = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 3
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 2
-        },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1
-        }
-    };
-    
-    return (
-        <section className="skill" id="skills">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <div className="skill-bx wow zoomIn">
-                            <h2>Skills</h2>
-                            <p>I specialize in application development, crafting efficient and scalable solutions, and web development, where I build dynamic and responsive websites. My expertise also extends to web design, focusing on creating user-friendly and visually engaging interfaces. Additionally, I apply data structures and algorithms to optimize problem-solving and enhance software performance.
+  return (
+    <section className="section" id="skills">
+      <div className="wrap">
+        <div className="sec-head">
+          <h2>Skills</h2>
+          <span className="count">03</span>
+        </div>
 
-                            <br></br></p>
-                            <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                                <div className="item">
-                                    <img src={meter1} alt="Image" />
-                                    <h5>Web Development</h5>
-                                </div>
-                                <div className="item">
-                                    <img src={meter2} alt="Image" />
-                                    <h5>Application Development</h5>
-                                </div>
-                                <div className="item">
-                                    <img src={meter3} alt="Image" />
-                                    <h5>Web Design</h5>
-                                </div>
-                                <div className="item">
-                                    <img src={meter1} alt="Image" />
-                                    <h5>Data Structures and Algorithms</h5>
-                                </div>
-                            </Carousel>
-                        </div>
-                    </div>
-                </div>
+        <div className="skills">
+          {GROUPS.map((group) => (
+            <div key={group.title}>
+              <h4>{group.title}</h4>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
-            <img className="background-image-left" src={colorSharp} alt="Image" />
-        </section>
-      )
-}
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

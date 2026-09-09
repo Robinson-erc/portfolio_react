@@ -1,95 +1,115 @@
 import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import emailjs from 'emailjs-com';
-import contactImg from "../assets/img/contact-img.svg";
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
+import emailjs from "emailjs-com";
 
-export const Contact = ({ contactRef }) => {
-  const formInitialDetails = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
-  }
-  const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [buttonText, setButtonText] = useState('Send');
+const EMPTY_FORM = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  message: "",
+};
+
+export const Contact = () => {
+  const [formDetails, setFormDetails] = useState(EMPTY_FORM);
+  const [buttonText, setButtonText] = useState("Send");
   const [status, setStatus] = useState({});
 
   const onFormUpdate = (category, value) => {
-    setFormDetails({
-      ...formDetails,
-      [category]: value
-    });
-  }
+    setFormDetails({ ...formDetails, [category]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setButtonText("Sending...");
 
-    emailjs.send(
-      'service_zlmwjze', // Replace with your EmailJS service ID
-      'template_9cozbbk', // Replace with your EmailJS template ID
-      formDetails,
-      'UZEk0wKpjd2ehLHEU' // Replace with your EmailJS user ID
-    ).then((result) => {
-      setButtonText("Send");
-      setFormDetails(formInitialDetails);
-      setStatus({ success: true, message: 'Message sent successfully' });
-    }, (error) => {
-      setButtonText("Send");
-      setStatus({ success: false, message: 'Something went wrong, please try again later.' });
-    });
+    emailjs
+      .send(
+        "service_zlmwjze",
+        "template_9cozbbk",
+        formDetails,
+        "UZEk0wKpjd2ehLHEU"
+      )
+      .then(
+        () => {
+          setButtonText("Send");
+          setFormDetails(EMPTY_FORM);
+          setStatus({ success: true, message: "Message sent — I'll get back to you." });
+        },
+        () => {
+          setButtonText("Send");
+          setStatus({
+            success: false,
+            message: "That didn't go through. Email me directly instead.",
+          });
+        }
+      );
   };
 
   return (
-    <section className="contact" id="contact" ref={contactRef}>
-      <Container>
-        <Row className="align-items-center">
-          <Col size={12} md={6}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <img src={contactImg} alt="Contact Us"/>
-              }
-            </TrackVisibility>
-          </Col>
-          <Col size={12} md={6}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div>
-                  <h2>Get In Touch</h2>
-                  <form onSubmit={handleSubmit}>
-                    <Row>
-                      <Col size={12} sm={6} className="px-1">
-                        <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
-                      </Col>
-                      <Col size={12} sm={6} className="px-1">
-                        <input type="text" value={formDetails.lastName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)}/>
-                      </Col>
-                      <Col size={12} sm={6} className="px-1">
-                        <input type="email" value={formDetails.email} placeholder="Email Address" onChange={(e) => onFormUpdate('email', e.target.value)} />
-                      </Col>
-                      <Col size={12} sm={6} className="px-1">
-                        <input type="tel" value={formDetails.phone} placeholder="Phone No." onChange={(e) => onFormUpdate('phone', e.target.value)}/>
-                      </Col>
-                      <Col size={12} className="px-1">
-                        <textarea rows="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
-                        <button type="submit"><span>{buttonText}</span></button>
-                      </Col>
-                      {
-                        status.message &&
-                        <Col>
-                          <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
-                        </Col>
-                      }
-                    </Row>
-                  </form>
-                </div>}
-            </TrackVisibility>
-          </Col>
-        </Row>
-      </Container>
+    <section className="section" id="contact">
+      <div className="wrap">
+        <div className="sec-head">
+          <h2>Contact</h2>
+          <span className="count">04</span>
+        </div>
+
+        <div className="contact-grid">
+          <div>
+            <p>
+              Open to conversations about reporting, data, and .NET work. The form sends
+              straight to my inbox, or reach me directly.
+            </p>
+            <div className="contact-direct">
+              <a href="mailto:eric.robinson1128@gmail.com">eric.robinson1128@gmail.com</a>
+              <a href="https://www.linkedin.com/in/eric-robinson-jr-841b1023b/">LinkedIn</a>
+              <a href="https://github.com/Robinson-erc">GitHub</a>
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className="form-grid">
+              <input
+                type="text"
+                value={formDetails.firstName}
+                placeholder="First name"
+                required
+                onChange={(e) => onFormUpdate("firstName", e.target.value)}
+              />
+              <input
+                type="text"
+                value={formDetails.lastName}
+                placeholder="Last name"
+                onChange={(e) => onFormUpdate("lastName", e.target.value)}
+              />
+              <input
+                className="full"
+                type="email"
+                value={formDetails.email}
+                placeholder="Email address"
+                required
+                onChange={(e) => onFormUpdate("email", e.target.value)}
+              />
+              <textarea
+                className="full"
+                rows="6"
+                value={formDetails.message}
+                placeholder="Message"
+                required
+                onChange={(e) => onFormUpdate("message", e.target.value)}
+              />
+              <div className="full">
+                <button className="cta" type="submit">
+                  {buttonText}
+                </button>
+              </div>
+            </div>
+            {status.message && (
+              <p className={status.success ? "form-status ok" : "form-status bad"}>
+                {status.message}
+              </p>
+            )}
+          </form>
+        </div>
+      </div>
     </section>
-  )
-}
+  );
+};

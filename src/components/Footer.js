@@ -1,31 +1,18 @@
-import { Container, Row, Col } from "react-bootstrap";
-import { MailchimpForm } from "./MailchimpForm";
-import logo from "../assets/img/ProfPic-removebg-preview.png";
-import navIcon1 from "../assets/img/nav-icon1.svg";
-import navIcon2 from "../assets/img/github.png";
-import navIcon3 from "../assets/img/nav-icon3.svg";
-
 export const Footer = () => {
   return (
     <footer className="footer">
-      <Container>
-        <Row className="align-items-center">
-          <MailchimpForm />
-          <Col size={12} sm={6}>
-            <img src={logo} alt="Logo" />
-          </Col>
-          <Col size={12} sm={6} className="text-center text-sm-end">
-            <div className="social-icon">
-              <a href="https://www.linkedin.com/in/eric-robinson-jr-841b1023b/"><img src={navIcon1} alt="icon" /></a>
-
-            </div>
-            <div className="social-icon">
-              <a href="https://github.com/Robinson-erc"><img src={navIcon2} alt="icon" /></a>
-            </div>
-            <p>Copyright 2024. All Rights Reserved</p>
-          </Col>
-        </Row>
-      </Container>
+      <div className="footer-inner">
+        <span>Eric Robinson</span>
+        <span className="spacer">
+          <a href="https://www.linkedin.com/in/eric-robinson-jr-841b1023b/">LinkedIn</a>
+        </span>
+        <span>
+          <a href="https://github.com/Robinson-erc">GitHub</a>
+        </span>
+        <span>
+          <a href="mailto:eric.robinson1128@gmail.com">Email</a>
+        </span>
+      </div>
     </footer>
-  )
-}
+  );
+};
